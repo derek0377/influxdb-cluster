@@ -5,6 +5,7 @@ I have imitated the influxdb clustering scheme based on the principle of codis. 
 1 同张图上显示 timeshift n hours的数据 和当前数据，可以同张图上 对比历史数据
   对比https://github.com/thedrhax-dockerfiles/influxdb-timeshift-proxy
   原生的influxdb不支持timeshift函数吧,我们这里可以实现
+
 New features: 
 
 1 The timeshift n hours data and current data are displayed on the same graph, which can be compared with the historical data on the same graph. https://github.com/thedrhax-dockerfiles/influxdb-timeshift-proxy The native influxdb does not support timeshift. Function, we can achieve here
@@ -12,12 +13,14 @@ New features:
 
 2 利用codis原理 sharding measurement to 不同的slot, 不同的slot属于不同 influxdb实例，从而达到打散数据的目的，
   支持 influxdb 多个备份同时写（多备份节点）
-2 Using the principle of codis sharding measurement to different slots, different slots belong to different influxdb instances, so as to achieve the purpose of breaking up data, support influxdb multiple backups at the same time write (multiple backup nodes)
+
+Using the principle of codis sharding measurement to different slots, different slots belong to different influxdb instances, so as to achieve the purpose of breaking up data, support influxdb multiple backups at the same time write (multiple backup nodes)
 
 3 redirect query by the measurement in the query-sql and merge result together
 
 4 支持用measurement单独sharding和 measurement + 指定tags sharding
-4 support with measurement alone sharding and measurement + specify tags sharding
+
+support with measurement alone sharding and measurement + specify tags sharding
 
 当前实现的 1 2 3 4 点已经完全满足influxdb 打散数据的作用，而且线上集群跑的很开心，最大的集群最大速率30～40W point／ per sec， 多个proxy实例前边放了http的LB，多个proxy后边都是一样配置的influxdb集群
 
