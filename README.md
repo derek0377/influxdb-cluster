@@ -5,6 +5,8 @@ I have imitated the influxdb clustering scheme based on the principle of codis. 
 1 同张图上显示 timeshift n hours的数据 和当前数据，可以同张图上 对比历史数据
   对比https://github.com/thedrhax-dockerfiles/influxdb-timeshift-proxy
   原生的influxdb不支持timeshift函数吧,我们这里可以实现
+  
+2 支持udp server, influxdb原始udp server 是单个goroutine接收数据，改为多goroutine监听同一个端口 增加并发处理程度，udp-server配置来源zk，不需要重启proxy更改配置
 
 New features: 
 
