@@ -1,0 +1,31 @@
+#zk server
+zk: 127.0.0.1:2181
+
+#zk path of slot conf
+zk_path: /slot_conf
+
+#http server port
+port: 9000
+
+#http post to influxdb's timeout
+write_timeout: 180
+
+#zk path to store udp server conf
+udp_path: /udp_instance
+
+#zk path to store server status
+ser_status: /ser_status
+
+#zk path to store migra slot info
+migra_slot: /migra_slot
+
+
+#zk path to store tag sharding conf
+db_shard: /db_shard
+
+
+# local folder for  persistent queue
+persi_queue: /tmp/cluster_queue
+
+#write to influxdb worker number
+write_worker: 20

@@ -1,0 +1,7 @@
+#instance write_flag read_flag  if (1) can write(read) else disable group_id(相同group id的slot也一样)
+127.0.0.1:8086 1 1 0
+127.0.0.2:8086 1 1 1
+127.0.0.3:8086 1 1 2
+127.0.0.4:8087 1 1 0
+127.0.0.5:8087 1 1 1
+127.0.0.6:8087 1 1 2

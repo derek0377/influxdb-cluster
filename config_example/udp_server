@@ -1,0 +1,2 @@
+#local udp server port, dbname, server workers number
+8088 nginx 7

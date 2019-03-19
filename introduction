@@ -1,0 +1,39 @@
+1 mv influxdb-cluster infP
+2 go build cluser.go
+3 go build cli.go
+
+基础配置:
+1 有个zk,配置到config_example/conf中
+
+2 mv cli config_example
+3 cd config_example
+4 ./cli -conf=conf -db_sharding=db_sharding -migra_slot=migra_slot -ser_status=ser_status -slot=slot_conf -udp=udp_server
+  读取对应配置文件中的内容写到zk中
+5 cd ..
+6 ./cluster -conf=config_example/conf 启动server
+
+7 写数据时http post到 server
+8 读数据 granfana的 datasource 切换到 server地址
+
+
+
+timeshift函数使用说明： SELECT timeshift(sum("conn_total"),24) FROM "measurement" (前偏移24小时)
+
+slot配置：
+1 slot总数16384个
+2 在slot_conf中,由于使用crc算法计算的slot存在这样一个问题，指标名前缀一样的(cpu_idle,cpu_used) 他会算到 几个连号的slot中，因此尽量打散slot的分配
+
+db_sharding:
+1 有时候单个measurement的series太多，按照measurement 只能sharding到单influxdb上，series太多会爆，
+  因此再按照某tag的维度再sharding，比如集群，机器，在db_sharding中配置
+2 db_sharding中按行配置格式： dbname *:cluster  就是dbname这个库的所有表 再按 cluster的tag value再做sharding
+3 也可以指定单一measurement   dbname measurementA:tagA
+4 至于通用的series sharding方式 还没开发
+
+
+监控: grafana中配置 _internal数据库，地址配proxy-server地址，配图还是查询速率，表个数，serise数量，会显示proxy后面挂的所有influxdb实例的监控数据
+
+
+
+
+

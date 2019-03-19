@@ -1,0 +1,2 @@
+#dbname measurement:tags  use to sharding
+dbname *:cluster
