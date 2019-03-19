@@ -1,4 +1,5 @@
 1 mv influxdb-cluster infP
+  vendor目录没有上传,不好也是，依赖得自己下载
 2 go build cluser.go
 3 go build cli.go
 
