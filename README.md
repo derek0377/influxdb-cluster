@@ -1,4 +1,4 @@
-# 自己模仿codis原理做的 influxdb 集群方案，网上都没搜到有类似想法的，但是这个方案绝对可行，向codis致敬
+# 自己模仿codis原理做的 influxdb 集群方案，网上都没搜到有类似想法的，但是这个方案可行
 I have imitated the influxdb clustering scheme based on the principle of codis. I have not found any similar ideas on the Internet, but this scheme is absolutely feasible and pays tribute to codis.
 
 新特性：
